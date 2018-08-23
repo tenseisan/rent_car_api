@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
-  get 'cars/index'
   namespace :api do
     namespace :v1 do
-      devise_for :users do
-
-      end
+      devise_for :users, controllers: {sessions: 'api/v1/sessions',
+                                       registrations: 'api/v1/registrations'}
+      resources :cars, only: [:index]
     end
   end
 end
