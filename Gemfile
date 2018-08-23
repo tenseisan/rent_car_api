@@ -8,12 +8,11 @@ ruby '2.5.1'
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise'
-gem 'devise_token_auth' # токены вместо кукисов
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.0'
 
 group :development, :test do
-  gem 'faker' # для демо-данных машин
+  gem 'faker' # для модели Car и тестов, которых нет
   gem 'rubocop' # код-стайл
   gem 'sqlite3'
 end
