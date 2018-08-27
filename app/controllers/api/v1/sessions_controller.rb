@@ -1,15 +1,15 @@
 class Api::V1::SessionsController < Devise::SessionsController
   before_action :ensure_params_exist
+  respond_to :json
 
   def create
     user = User.find_by(email: params[:user][:email])
-    return invalid_login_attempt unless user
 
-    if user.valid_password?(params[:user][:password])
-      sign_in user # теперь у нас доступен current_user
-      current_api_v1_user.reset_authentication_token! # перевыпускаем token
+    if user.present? && user.valid_password?(params[:user][:password])
+      sign_in user
+      token = Tiddle.create_and_return_token(user, request, expires_in: 3.hours)
 
-      render json: user, status: :ok
+      render json: { authentication_token: token }
     else
       render status: :unauthorized
     end
@@ -19,9 +19,5 @@ class Api::V1::SessionsController < Devise::SessionsController
 
   def ensure_params_exist
     render status: :unprocessable_entity if params[:user].blank?
-  end
-
-  def invalid_login_attempt
-    render status: :unauthorized
   end
 end

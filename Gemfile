@@ -8,8 +8,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.0'
-gem 'simple_token_authentication', '~> 1.0' # токены для auth
 gem 'validates_overlap' # валидация для аренды
+gem 'tiddle'
 
 group :development, :test do
   gem 'factory_bot_rails', '~> 4.0'
