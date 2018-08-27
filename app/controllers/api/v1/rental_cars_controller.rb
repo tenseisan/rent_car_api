@@ -3,6 +3,7 @@ class Api::V1::RentalCarsController < ApplicationController
 
   def create
     @rent_car = @user.rental_car.new(car_rental_params)
+
     if @rent_car.save
       render json: @rent_car, status: :created
     else

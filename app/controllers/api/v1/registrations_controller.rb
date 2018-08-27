@@ -1,10 +1,10 @@
 class Api::V1::RegistrationsController < Devise::RegistrationsController
   def create
-    @user = User.new(user_params)
-    if @user.save
-      render status: :created # response.message - статус код 201
+    user = User.new(user_params)
+    if user.save
+      render json: user, status: :created # response.message - статус код 201
     else
-      render status: :unprocessable_entity # response.message - статус код 422
+      render json: user.errors, status: :unprocessable_entity # response.message - статус код 422
     end
   end
 

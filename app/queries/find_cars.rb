@@ -7,7 +7,7 @@ class FindCars
 
   def call(params)
     scoped = search(@cars, params[:search])
-    scoped = filter_car_type(scoped, params[:car_type])
+    scoped = filter_car_type(scoped, params[:properties])
     scoped
   end
 

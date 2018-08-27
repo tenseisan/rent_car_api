@@ -17,7 +17,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rubocop' # код-стайл
   gem 'shoulda-matchers'
-  gem 'simplecov', require: false
+  gem 'simplecov', require: false # для того чтобы знать, что тестов нету
   gem 'sqlite3'
 end
 

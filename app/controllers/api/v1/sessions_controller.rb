@@ -6,9 +6,10 @@ class Api::V1::SessionsController < Devise::SessionsController
     return invalid_login_attempt unless user
 
     if user.valid_password?(params[:user][:password])
-      sign_in user
+      sign_in user # теперь у нас доступен current_user
+      current_api_v1_user.reset_authentication_token! # перевыпускаем token
 
-      render status: :ok
+      render json: user, status: :ok
     else
       render status: :unauthorized
     end
