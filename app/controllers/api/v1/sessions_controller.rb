@@ -9,7 +9,7 @@ class Api::V1::SessionsController < Devise::SessionsController
       sign_in user
       token = Tiddle.create_and_return_token(user, request, expires_in: 3.hours)
 
-      render json: { authentication_token: token }
+      render json: { authentication_token: token }, status: :ok
     else
       render status: :unauthorized
     end

@@ -8,12 +8,12 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.0'
-gem 'validates_overlap' # валидация для аренды
 gem 'tiddle'
+gem 'validates_overlap' # валидация для аренды
 
 group :development, :test do
   gem 'factory_bot_rails', '~> 4.0'
-  gem 'faker' # для модели Car и тестов, которых нет
+  gem 'faker' # для тестов которых нет и db:seed
   gem 'rspec-rails'
   gem 'rubocop' # код-стайл
   gem 'shoulda-matchers'

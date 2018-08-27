@@ -1,3 +1,4 @@
 class RentalCarSerializer < ActiveModel::Serializer
-  attributes :id, :starts_at, :ends_at, :total_price
+  belongs_to :car
+  attributes :starts_at, :ends_at, :total_price
 end
