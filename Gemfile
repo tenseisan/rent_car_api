@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -10,10 +8,16 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise'
 gem 'puma', '~> 3.11'
 gem 'rails', '~> 5.2.0'
+gem 'simple_token_authentication', '~> 1.0' # токены для auth
+gem 'validates_overlap' # валидация для аренды
 
 group :development, :test do
+  gem 'factory_bot_rails', '~> 4.0'
   gem 'faker' # для модели Car и тестов, которых нет
+  gem 'rspec-rails'
   gem 'rubocop' # код-стайл
+  gem 'shoulda-matchers'
+  gem 'simplecov', require: false
   gem 'sqlite3'
 end
 

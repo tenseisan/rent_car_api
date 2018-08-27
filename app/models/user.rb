@@ -1,6 +1,9 @@
 class User < ApplicationRecord
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+  acts_as_token_authenticatable
+
+  devise :database_authenticatable, :registerable, :validatable
 
   has_many :rental_car, dependent: :destroy
+
+  validates :email, uniqueness: true
 end

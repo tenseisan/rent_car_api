@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_22_171938) do
+ActiveRecord::Schema.define(version: 2018_08_25_115430) do
 
   create_table "cars", force: :cascade do |t|
     t.string "car_type"
@@ -21,16 +21,16 @@ ActiveRecord::Schema.define(version: 2018_08_22_171938) do
     t.float "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "status", default: 0
   end
 
   create_table "rental_cars", force: :cascade do |t|
-    t.date "time_start"
-    t.date "time_end"
+    t.date "starts_at"
+    t.date "ends_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.integer "car_id"
+    t.float "total_price"
   end
 
   create_table "users", force: :cascade do |t|
@@ -46,6 +46,8 @@ ActiveRecord::Schema.define(version: 2018_08_22_171938) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "authentication_token", limit: 30
+    t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

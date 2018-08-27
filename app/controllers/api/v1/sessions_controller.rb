@@ -2,11 +2,12 @@ class Api::V1::SessionsController < Devise::SessionsController
   before_action :ensure_params_exist
 
   def create
-    resource = User.find_by(email: params[:user][:email])
-    return invalid_login_attempt unless resource
+    user = User.find_by(email: params[:user][:email])
+    return invalid_login_attempt unless user
 
-    if resource.valid_password?(params[:user][:password])
-      sign_in(:user, resource)
+    if user.valid_password?(params[:user][:password])
+      sign_in user
+
       render status: :ok
     else
       render status: :unauthorized
