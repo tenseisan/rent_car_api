@@ -8,6 +8,7 @@ class RentalCar < ApplicationRecord
   validate :right_date
   validate :minimum_maximum_rent
   validate :one_auto_per_client
+
   before_save :set_total_price
 
   private
