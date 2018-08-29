@@ -3,7 +3,7 @@ class RentalCar < ApplicationRecord
   belongs_to :user
 
   validates :starts_at, :ends_at, :car_id, :user_id, presence: true
-  validates :starts_at, :ends_at, overlap: {:scope => "car_id"}
+  validates :starts_at, :ends_at, overlap: { scope: 'car_id' }
 
   validate :minimum_maximum_rent
   validate :one_auto_per_client
@@ -14,7 +14,7 @@ class RentalCar < ApplicationRecord
 
   def minimum_maximum_rent
     days = (ends_at - starts_at).to_i
-    errors.add(:base, 'Wrong number of days') unless (1..30).include?(days)
+    errors.add(:base, 'Wrong number of days') unless (1..30).cover?(days)
   end
 
   def one_auto_per_client
