@@ -3,7 +3,7 @@ class RentalCar < ApplicationRecord
   belongs_to :user
 
   validates :starts_at, :ends_at, :car_id, :user_id, presence: true
-  validates :starts_at, :ends_at, overlap: true
+  validates :starts_at, :ends_at, overlap: { scope: user_id }
 
   validate :right_date
   validate :minimum_maximum_rent
