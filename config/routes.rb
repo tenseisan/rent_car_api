@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   namespace :api, constraints: { format: 'json' } do
     namespace :v1 do
       devise_for :users,
-                 controllers: { sessions: 'api/v1/sessions',
-                                registrations: 'api/v1/registrations' }
+                 controllers: { sessions: 'api/v1/devise/sessions',
+                                registrations: 'api/v1/devise/registrations' }
 
       resource :users, only: [:rental_history] do
         collection do

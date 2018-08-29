@@ -1,4 +1,4 @@
-class Api::V1::SessionsController < Devise::SessionsController
+class Api::V1::Devise::SessionsController < Devise::SessionsController
   before_action :ensure_params_exist
 
   def create
