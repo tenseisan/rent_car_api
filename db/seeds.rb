@@ -1,4 +1,4 @@
-10.times do
+5.times do
   Car.create!(
   car_type: Faker::Vehicle.car_type,
   color: Faker::Vehicle.color,
@@ -11,16 +11,4 @@
   email: Faker::SiliconValley.email,
   password: 123123
   )
-end
-
-
-User.all.each do |user|
-  1.times do
-    RentalCar.create!(
-    starts_at: Time.now + rand(1..6).days,
-    ends_at: Time.now + rand(20..30).days,
-    user_id: user.id,
-    car_id: rand(1..9)
-    )
-  end
 end

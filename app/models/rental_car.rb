@@ -14,8 +14,8 @@ class RentalCar < ApplicationRecord
   private
 
   def minimum_maximum_rent
-    errors.add(:base, 'Wrong number of days') if
-    (ends_at - starts_at).to_i < 1 || (ends_at - starts_at).to_i > 30
+    days = (ends_at - starts_at).to_i
+    errors.add(:base, 'Wrong number of days') unless (1..30).include?(days)
   end
 
   def right_date

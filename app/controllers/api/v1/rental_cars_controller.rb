@@ -1,5 +1,5 @@
 class Api::V1::RentalCarsController < ApplicationController
-  before_action :set_user, only: [:create]
+  before_action :set_user
   before_action :authenticate_api_v1_user!, only: [:create]
 
   def create
